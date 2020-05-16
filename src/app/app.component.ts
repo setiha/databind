@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Componentbasic';
+   title = 'Componentbasic';
+  events = ['egy', 'ketto', 'harom', 'negy', 'ot'];
+   show = true;
+  klikkeljunke = true;
+  inputContent: string;
+
+  toggle() {
+    this.show = !this.show;
+    this.inputContent = 'szena szalma';
+  }
+
+  demo(event: MouseEvent) {
+    console.log(event.screenY);
+  }
 }
