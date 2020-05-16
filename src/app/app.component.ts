@@ -6,11 +6,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-   title = 'Componentbasic';
+  title = 'Componentbasic';
   events = ['egy', 'ketto', 'harom', 'negy', 'ot'];
-   show = true;
+  show = true;
   klikkeljunke = true;
   inputContent: string;
+  pipeDemo = [{id: 1, name: 'laci'}, {id: 2, name: 'lolo'}, {id: 3, name: 'bozsi'}];
 
   toggle() {
     this.show = !this.show;
@@ -20,4 +21,5 @@ export class AppComponent {
   demo(event: MouseEvent) {
     console.log(event.screenY);
   }
+
 }
