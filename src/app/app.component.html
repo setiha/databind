@@ -21,8 +21,9 @@
 
 <button (click)="toggle()"
         (mouseover)="demo($event)"
-        [disabled]="!klikkeljunke">
+        [disabled]="klikkeljunke">
           Toggle
 </button>
 <div>{{title | uppercase }}</div>
 <div>{{pipeDemo | json}}</div>
+<app-listdemo></app-listdemo>
