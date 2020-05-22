@@ -21,7 +21,7 @@
 
 <button (click)="toggle()"
         (mouseover)="demo($event)"
-        [disabled]="klikkeljunke">
+        [disabled]="!klikkeljunke">
           Toggle
 </button>
 <div>{{title | uppercase }}</div>
