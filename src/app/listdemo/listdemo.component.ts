@@ -1,17 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {EventModel} from './event-model';
 
-export class EventModel /*adatleiro modell osztaly*/ {
-  id: number;
-  name: string;
-  pic?: string;
-
-  constructor(id, name, pic = ''  ) {
-    //Object.assign- parameterek helyett csak egy parametert varok, param; a masodik objektum elemeit atmasolja az elsore
-    this.id = id;
-    this.name = name;
-    this.pic = pic;
-  }
-}
 
 @Component({
   selector: 'app-listdemo',
@@ -40,11 +29,25 @@ export class ListdemoComponent {
         pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSB3gWNOEJv0-ApUKI8-2blHyL0NjHxQUVKOEK5WbZpSgpSivyO&usqp=CAUs'
       }
     ];
+    /*const puf = this.events.reduce((x: EventModel, y: EventModel) => {
+      return x.id > y.id ? x : y;*/
+      /*ternary operator-(logikai vizsgalat) ? ha igaz, : ha hamis*/
+
+      /*if (x.id > y.id) {
+       return x;
+      }else{
+        return y;
+      }*/
+
+    /*}).id ;
+    console.log(puf)*/
   }
 
   add(newEventNameInput: HTMLInputElement) {
     //immutability
-    this.events = [...this.events, new EventModel(5, newEventNameInput.value)];
+    const maxId = this.events.reduce((x: EventModel, y: EventModel) =>
+       x.id > y.id ? x : y).id;
+    this.events = [...this.events, new EventModel(maxId + 1, newEventNameInput.value)];
 
     console.log(newEventNameInput.value);
     newEventNameInput.value = '';
