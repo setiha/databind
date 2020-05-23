@@ -7,8 +7,17 @@
   </li>
 
 </ul>
-<input type="text" #newEventNameInput>
-<button (click) = "add(newEventNameInput)">Save</button>
+
+
+<div>
+<label for="eventname">Uj esemeny neve</label>
+<input type="text" #newEventNameInput id="eventname">
+</div>
+<div>
+<label for="eventpic">Uj esemenyhez tartozo kep Url</label>
+<input type="text" #newEventInputPic id="eventpic">
+</div>
+<button (click) = "add(newEventNameInput,newEventInputPic )">Save</button>
 <pre>{{events | json}}</pre>
 
 

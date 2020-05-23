@@ -43,14 +43,15 @@ export class ListdemoComponent {
     console.log(puf)*/
   }
 
-  add(newEventNameInput: HTMLInputElement) {
+  add(newEventNameInput: HTMLInputElement, newEventInputPic: HTMLInputElement) {
     //immutability
     const maxId = this.events.reduce((x: EventModel, y: EventModel) =>
        x.id > y.id ? x : y).id;
-    this.events = [...this.events, new EventModel(maxId + 1, newEventNameInput.value)];
+    this.events = [...this.events, new EventModel(maxId + 1, newEventNameInput.value, newEventInputPic.value)];
 
     console.log(newEventNameInput.value);
     newEventNameInput.value = '';
+    newEventInputPic.value = '';
   }
 
   delete(id: number) {
