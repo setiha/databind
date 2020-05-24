@@ -72,7 +72,6 @@ return {
 
   edit(id: number) {
     this.modifyEvent = this.events.filter((ev) => ev.id === id)[0];
-    console.log(this.modifyEvent);
   }
 
   delete(id: number) {

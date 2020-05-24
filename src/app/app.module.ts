@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { EventComponent } from './event/event.component';
 import {FormsModule} from "@angular/forms";
 import { ListdemoComponent } from './listdemo/listdemo.component';
+import { AzenpipeomPipe } from './listdemo/azenpipeom.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
-    ListdemoComponent
+    ListdemoComponent,
+    AzenpipeomPipe
   ],
   imports: [
     BrowserModule,
