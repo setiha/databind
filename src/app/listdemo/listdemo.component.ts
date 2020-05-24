@@ -9,7 +9,7 @@ import {EventModel} from './event-model';
 })
 export class ListdemoComponent {
   events: EventModel[];
-
+  modifyEvent: EventModel;
 
   constructor() {
     this.events = [
@@ -30,28 +30,49 @@ export class ListdemoComponent {
       }
     ];
     /*const puf = this.events.reduce((x: EventModel, y: EventModel) => {
-      return x.id > y.id ? x : y;*/
-      /*ternary operator-(logikai vizsgalat) ? ha igaz, : ha hamis*/
+     return x.id > y.id ? x : y;*/
+    /*ternary operator-(logikai vizsgalat) ? ha igaz, : ha hamis*/
 
-      /*if (x.id > y.id) {
-       return x;
-      }else{
-        return y;
-      }*/
+    /*if (x.id > y.id) {
+     return x;
+     }else{
+     return y;
+     }*/
 
     /*}).id ;
-    console.log(puf)*/
+     console.log(puf)*/
+    this.modifyEvent = new EventModel('');
   }
 
-  add(newEventNameInput: HTMLInputElement, newEventInputPic: HTMLInputElement) {
-    //immutability
-    const maxId = this.events.reduce((x: EventModel, y: EventModel) =>
-       x.id > y.id ? x : y).id;
-    this.events = [...this.events, new EventModel(maxId + 1, newEventNameInput.value, newEventInputPic.value)];
+  save(newEventNameInput: HTMLInputElement, newEventInputPic: HTMLInputElement) {
+    if (this.modifyEvent.id === 0) {
 
-    console.log(newEventNameInput.value);
+      const maxId = this.events.reduce((x: EventModel, y: EventModel) =>
+        x.id > y.id ? x : y).id;
+      this.events = [...this.events, new EventModel(newEventNameInput.value, maxId + 1, newEventInputPic.value)];
+    } else {
+      this.events = this.events.map((ev) => {
+          if (ev.id === this.modifyEvent.id) {
+return {
+  id: ev.id,
+  name: newEventNameInput.value,
+  pic: newEventInputPic.value
+};
+          }else{
+            return ev;
+          }
+        }
+      );
+      this.modifyEvent = new EventModel('');
+    }
     newEventNameInput.value = '';
     newEventInputPic.value = '';
+
+  }
+
+  edit(id: number) {
+    this.modifyEvent = this.events.filter((ev) => ev.id === id)[0];
+    console.log(this.modifyEvent);
   }
 
   delete(id: number) {
